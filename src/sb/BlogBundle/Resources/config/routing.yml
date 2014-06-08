@@ -3,5 +3,5 @@ blog_index:
     defaults: { _controller: sbBlogBundle:Blog:index }
 
 blog_post_show:
-    pattern:  /{slug}-{postId}
+    pattern:  /{slug}
     defaults: { _controller: sbBlogBundle:Blog:showPost }

@@ -31,7 +31,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 
@@ -45,7 +45,7 @@ class Post
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_draft", type="boolean", nullable=true)
+     * @ORM\Column(name="is_draft", type="boolean")
      */
     private $isDraft = 0;
 
@@ -63,6 +63,12 @@ class Post
      */
     private $editDate;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_date", type="datetimetz")
+     */
+    private $publishDate;
 
     /**
      * Get id
@@ -211,4 +217,28 @@ class Post
     {
         return $this->editDate;
     }
+
+    /**
+     * Set publishDate
+     *
+     * @param \DateTime $publishDate
+     * @return Post
+     */
+    public function setPublishDate($publishDate)
+    {
+        $this->publishDate = $publishDate;
+
+        return $this;
+    }
+
+    /**
+     * Get publishDate
+     *
+     * @return \DateTime
+     */
+    public function getPublishDate()
+    {
+        return $this->publishDate;
+    }
+
 }

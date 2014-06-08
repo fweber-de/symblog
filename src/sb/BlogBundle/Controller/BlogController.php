@@ -7,15 +7,41 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BlogController extends Controller
 {
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-        return $this->get('template_controller')->renderTemplate('index.html.twig');
+        //get all posts which are not marked as draft
+        $posts = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findBy(array('isDraft' => 0), array('publishDate' => 'desc'));
+
+        //render
+        return $this->get('template_controller')->renderTemplate('index.html.twig', array(
+            'posts' => $posts
+        ));
     }
 
-    public function showPostAction($slug, $postId)
+    /**
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function showPostAction($slug)
     {
-        $post = null;
+        //get post
+        $post = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findOneBySlug($slug);
 
+        //post not found
+        if (!$post) {
+            throw $this->createNotFoundException();
+        }
+
+        //if post is a draft, abort
+        if ($post->getIsDraft() == true) {
+            throw $this->createNotFoundException('This Post wasn\'t published yet!');
+        }
+
+        //render
         return $this->get('template_controller')->renderTemplate('post.html.twig', array(
             'post' => $post
         ));

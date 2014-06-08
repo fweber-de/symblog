@@ -2,6 +2,11 @@
 
 {% block content %}
 
-    post
+    <h3>{{ post.title }}</h2>
+    <h4 class="pull-right">{{ post.publishDate|date('d.m.Y G:i') }}</h3>
+
+    <p>
+        {{ post.text }}
+    </p>
 
 {% endblock %}

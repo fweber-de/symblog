@@ -2,6 +2,14 @@
 
 {% block content %}
 
-    #
+    <br>
+    <br>
+
+    {% for post in posts %}
+        <div class="post">
+            <a href="{{ path('blog_post_show', {slug: post.slug}) }}">{{ post.title }}</a> - {{ post.publishDate|date('d.m.Y G:i') }}
+            <hr>
+        </div>
+    {% endfor %}
 
 {% endblock %}
