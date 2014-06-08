@@ -1,3 +1,7 @@
+sb_api:
+    resource: "@sbApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+
 sb_admin:
     resource: "@sbAdminBundle/Resources/config/routing.yml"
     prefix:   /admin

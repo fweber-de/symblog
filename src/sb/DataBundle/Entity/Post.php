@@ -66,7 +66,7 @@ class Post
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publish_date", type="datetimetz")
+     * @ORM\Column(name="publish_date", type="datetimetz", nullable=true)
      */
     private $publishDate;
 

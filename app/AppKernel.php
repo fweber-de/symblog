@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new sb\AdminBundle\sbAdminBundle(),
             new sb\DataBundle\sbDataBundle(),
             new sb\TemplateBundle\sbTemplateBundle(),
+            new sb\ApiBundle\sbApiBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

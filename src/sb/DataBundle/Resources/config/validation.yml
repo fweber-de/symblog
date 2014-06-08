@@ -1,0 +1,12 @@
+sb\DataBundle\Entity\Post:
+    properties:
+        title:
+            - NotBlank: ~
+        slug:
+            - NotBlank: ~
+        text:
+            - NotBlank: ~
+        creationDate:
+            - DateTime: ~
+        publishDate:
+            - DateTime: ~

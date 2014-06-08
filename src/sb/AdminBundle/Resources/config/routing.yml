@@ -3,5 +3,5 @@ admin_index:
     defaults: { _controller: sbAdminBundle:Page:index }
 
 admin_posts:
-    resource: "@sbAdminBundle/Resources/config/routing.yml"
+    resource: "@sbAdminBundle/Resources/config/Post/routing.yml"
     prefix:   /posts

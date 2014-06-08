@@ -1,0 +1,25 @@
+#posts
+api_posts_collection:
+    pattern:  /posts
+    defaults: { _controller: sbApiBundle:Post:collection }
+    methods: [GET]
+
+api_posts_create:
+    pattern:  /posts
+    defaults: { _controller: sbApiBundle:Post:create }
+    methods: [POST]
+
+api_posts_object:
+    pattern:  /posts/{postId}
+    defaults: { _controller: sbApiBundle:Post:object }
+    methods: [GET]
+
+api_posts_update:
+    pattern:  /posts/{postId}
+    defaults: { _controller: sbApiBundle:Post:update }
+    methods: [PUT]
+
+api_posts_delete:
+    pattern:  /posts/{postId}
+    defaults: { _controller: sbApiBundle:Post:delete }
+    methods: [DELETE]
