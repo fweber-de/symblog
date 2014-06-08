@@ -1,0 +1,11 @@
+fweber_template_js:
+    pattern:  /{templateName}/js/{fileName}
+    defaults: { _controller: fweberTemplateBundle:Template:getJs }
+    
+fweber_template_css:
+    pattern:  /{templateName}/css/{fileName}
+    defaults: { _controller: fweberTemplateBundle:Template:getCss }
+    
+fweber_template_fonts:
+    pattern:  /{templateName}/fonts/{fileName}
+    defaults: { _controller: fweberTemplateBundle:Template:getFonts }

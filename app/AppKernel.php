@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new fweber\BlogBundle\fweberBlogBundle(),
             new fweber\AdminBundle\fweberAdminBundle(),
             new fweber\DataBundle\fweberDataBundle(),
+            new fweber\TemplateBundle\fweberTemplateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
