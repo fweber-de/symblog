@@ -1,6 +1,6 @@
 <?php
 
-namespace fweber\DataBundle\Entity;
+namespace sb\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Template
  *
  * @ORM\Table("sb_template")
- * @ORM\Entity(repositoryClass="fweber\DataBundle\Entity\TemplateRepository")
+ * @ORM\Entity(repositoryClass="sb\DataBundle\Entity\TemplateRepository")
  */
 class Template
 {

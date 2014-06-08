@@ -16,10 +16,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new fweber\BlogBundle\fweberBlogBundle(),
-            new fweber\AdminBundle\fweberAdminBundle(),
-            new fweber\DataBundle\fweberDataBundle(),
-            new fweber\TemplateBundle\fweberTemplateBundle(),
+            new sb\BlogBundle\sbBlogBundle(),
+            new sb\AdminBundle\sbAdminBundle(),
+            new sb\DataBundle\sbDataBundle(),
+            new sb\TemplateBundle\sbTemplateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

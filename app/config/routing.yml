@@ -1,11 +1,11 @@
 sb_admin:
-    resource: "@fweberAdminBundle/Resources/config/routing.yml"
+    resource: "@sbAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
 sb_templates:
-    resource: "@fweberTemplateBundle/Resources/config/routing.yml"
+    resource: "@sbTemplateBundle/Resources/config/routing.yml"
     prefix:   /templates
 
 sb_blog:
-    resource: "@fweberBlogBundle/Resources/config/routing.yml"
+    resource: "@sbBlogBundle/Resources/config/routing.yml"
     prefix:   /

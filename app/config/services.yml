@@ -1,5 +1,5 @@
 services:
     template_controller:
-        class:  "fweber\TemplateBundle\Controller\TemplateController"
+        class:  "sb\TemplateBundle\Controller\TemplateController"
         calls:
             - [setContainer, ["@service_container"]]

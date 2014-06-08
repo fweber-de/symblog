@@ -1,0 +1,7 @@
+blog_index:
+    pattern:  /
+    defaults: { _controller: sbBlogBundle:Blog:index }
+
+blog_post_show:
+    pattern:  /{slug}-{postId}
+    defaults: { _controller: sbBlogBundle:Blog:showPost }

@@ -1,6 +1,6 @@
 <?php
 
-namespace fweber\BlogBundle\Controller;
+namespace sb\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

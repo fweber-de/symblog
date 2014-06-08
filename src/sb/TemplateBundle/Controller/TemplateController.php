@@ -1,6 +1,6 @@
 <?php
 
-namespace fweber\TemplateBundle\Controller;
+namespace sb\TemplateBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
@@ -21,10 +21,10 @@ class TemplateController extends Controller
      */
     public function renderTemplate($viewName, $parameters = array())
     {
-        $template = $this->getDoctrine()->getRepository('fweberDataBundle:Template')->findCurrent();
+        $template = $this->getDoctrine()->getRepository('sbDataBundle:Template')->findCurrent();
         $parameters['template'] = $template;
 
-        return $this->render('fweberTemplateBundle:' . $template->getIdentifier() . ':' . $viewName, $parameters);
+        return $this->render('sbTemplateBundle:' . $template->getIdentifier() . ':' . $viewName, $parameters);
     }
 
     private function getAsset($template, $filename, $type, $contentType = null)

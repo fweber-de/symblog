@@ -1,6 +1,6 @@
 <?php
 
-namespace fweber\DataBundle\Entity;
+namespace sb\DataBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -16,14 +16,14 @@ class TemplateRepository extends EntityRepository
     /**
      * Gets the currently activated Template
      *
-     * @return \fweber\DataBundle\Entity\Template
+     * @return \sb\DataBundle\Entity\Template
      */
     public function findCurrent()
     {
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder()
             ->add('select', 'h')
-            ->add('from', 'fweberDataBundle:TemplateHistory h')
+            ->add('from', 'sbDataBundle:TemplateHistory h')
             ->add('orderBy', 'h.id DESC')
             ->setMaxResults(1);
         $query = $qb->getQuery();

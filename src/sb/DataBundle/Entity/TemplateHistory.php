@@ -1,6 +1,6 @@
 <?php
 
-namespace fweber\DataBundle\Entity;
+namespace sb\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,0 +1,11 @@
+sb_template_js:
+    pattern:  /{templateName}/js/{fileName}
+    defaults: { _controller: sbTemplateBundle:Template:getJs }
+    
+sb_template_css:
+    pattern:  /{templateName}/css/{fileName}
+    defaults: { _controller: sbTemplateBundle:Template:getCss }
+    
+sb_template_fonts:
+    pattern:  /{templateName}/fonts/{fileName}
+    defaults: { _controller: sbTemplateBundle:Template:getFonts }
