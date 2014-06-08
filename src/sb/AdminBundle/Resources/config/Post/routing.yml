@@ -1,0 +1,15 @@
+admin_posts_collection:
+    pattern:  /
+    defaults: { _controller: sbAdminBundle:Post:collection }
+
+admin_posts_create:
+    pattern:  /new
+    defaults: { _controller: sbAdminBundle:Post:create }
+
+admin_posts_update:
+    pattern:  /{postId}/edit
+    defaults: { _controller: sbAdminBundle:Post:update }
+
+admin_posts_delete:
+    pattern:  /{postId}/delete
+    defaults: { _controller: sbAdminBundle:Post:delete }
