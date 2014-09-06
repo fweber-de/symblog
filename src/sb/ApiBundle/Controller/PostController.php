@@ -23,6 +23,10 @@ class PostController extends AbstractApiController
         return $this->sendJSONResponse($posts);
     }
 
+    /**
+     * @param $postId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function objectAction($postId)
     {
         $post = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findOneById($postId);
@@ -30,6 +34,10 @@ class PostController extends AbstractApiController
         return $this->sendJSONResponse($post);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request)
     {
         $post = $this->getObject($request->getContent(), 'sb\DataBundle\Entity\Post');
@@ -50,9 +58,31 @@ class PostController extends AbstractApiController
         return $this->sendJSONResponse($post);
     }
 
+    /**
+     * @param Request $request
+     * @param $postId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function updateAction(Request $request, $postId)
     {
+        $em = $this->getDoctrine()->getManager();
+        $updatedPost = $this->getObject($request->getContent(), 'sb\DataBundle\Entity\Post');
+        $post = $em->getRepository('sbDataBundle:Post')->findOneById($postId);
 
+        $validator = $this->get('validator');
+        $errors = $validator->validate($updatedPost);
+
+        if (count($errors) > 0) {
+            $errorsString = (string)$errors;
+
+            return $this->throwJSONException($errorsString, 400);
+        }
+
+        $post = $updatedPost;
+
+        $em->flush();
+
+        return $this->sendJSONResponse($post);
     }
 
     public function deleteAction(Request $request, $postId)

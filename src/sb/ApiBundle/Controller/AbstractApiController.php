@@ -73,7 +73,7 @@ abstract class AbstractApiController extends Controller
     }
 
     /**
-     * Gets the Requested Object from JSON
+     * Gets a Entity Object from the Request
      *
      * @param $json
      * @param $classFQCN
