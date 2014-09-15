@@ -2,6 +2,7 @@
 
 namespace sb\TemplateBundle\Controller;
 
+use MyProject\Proxies\__CG__\stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,6 +12,36 @@ const DS = DIRECTORY_SEPARATOR;
 
 class TemplateController extends Controller
 {
+    /**
+     * @var string
+     */
+    protected $currentTemplate;
+
+    /**
+     * @var mixed
+     */
+    protected $templates;
+
+    public function __construct($currentTemplate, $templates)
+    {
+        $this->currentTemplate = $currentTemplate;
+        $this->templates = $templates;
+    }
+
+    /**
+     * @param $identifier
+     * @return mixed
+     * @throws \Exception
+     */
+    protected function getTemplateData($identifier)
+    {
+        foreach($this->templates as $template)
+        {
+            if($template['identifier'] == $identifier) return json_decode(json_encode($template), false);
+        }
+
+        throw new \Exception('The Template with Identifier "' . $identifier . '" is not defined!');
+    }
 
     /**
      * Gets the current Template and renders the given view
@@ -21,10 +52,19 @@ class TemplateController extends Controller
      */
     public function renderTemplate($viewName, $parameters = array())
     {
-        $template = $this->getDoctrine()->getRepository('sbDataBundle:Template')->findCurrent();
+        $templateLocation = __DIR__ . '/../../../../templates/' . $this->currentTemplate;
+        $template = $this->getTemplateData($this->currentTemplate);
         $parameters['template'] = $template;
 
-        return $this->render('sbTemplateBundle:' . $template->getIdentifier() . ':' . $viewName, $parameters);
+        $twig = clone $this->get('twig');
+        $twig->setLoader(new \Twig_Loader_Filesystem($templateLocation));
+
+        $rendered = $twig->render(
+            $viewName,
+            $parameters
+        );
+
+        return new Response($rendered);
     }
 
     private function getAsset($template, $filename, $type, $contentType = null)
@@ -62,5 +102,4 @@ class TemplateController extends Controller
     {
         return $this->getAsset($templateName, $fileName, 'fonts');
     }
-
 }
