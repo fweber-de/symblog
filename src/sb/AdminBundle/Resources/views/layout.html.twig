@@ -25,7 +25,8 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -37,25 +38,28 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li id="nl-dashboard"><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                        <li id="nl-posts"><a href="{{ path('admin_posts_collection') }}"><i class="fa fa-bolt"></i> Posts</a></li>
-                        <li><a target="_blank" href="{{ path('blog_index') }}"><i class="fa fa-binoculars"></i> Blog</a></li>
+                        <li id="nl-dashboard"><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i>
+                                Dashboard</a></li>
+                        <li id="nl-posts"><a href="{{ path('admin_posts_collection') }}"><i class="fa fa-bolt"></i>
+                                Posts</a></li>
+                        <li><a target="_blank" href="{{ path('blog_index') }}"><i class="fa fa-binoculars"></i> Blog</a>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> [USER]<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i> {{ app.user.username }}<span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
         </nav>
 
         <div class="container">
@@ -65,15 +69,17 @@
                     {# flash messages #}
                     {% for flashMessage in app.session.flashbag.get('notice') %}
                         <div class="alert alert-info">
-                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            {{flashMessage}}
+                            <button type="button" class="close" data-dismiss="alert"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            {{ flashMessage }}
                         </div>
                     {% endfor %}
 
                     {% for flashMessage in app.session.flashbag.get('error') %}
                         <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            {{flashMessage}}
+                            <button type="button" class="close" data-dismiss="alert"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            {{ flashMessage }}
                         </div>
                     {% endfor %}
 

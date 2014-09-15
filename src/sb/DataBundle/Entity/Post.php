@@ -71,6 +71,12 @@ class Post
     private $publishDate;
 
     /**
+     * @ORM\ManyToOne(targetEntity="sb\UserBundle\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
+    /**
      * Get id
      *
      * @return integer
@@ -241,4 +247,26 @@ class Post
         return $this->publishDate;
     }
 
+    /**
+     * Set author
+     *
+     * @param \sb\UserBundle\Entity\User $author
+     * @return Post
+     */
+    public function setAuthor(\sb\UserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \sb\UserBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 }

@@ -222,3 +222,4 @@ pip-log.txt
 /app/config/parameters.yml
 /nbproject/*
 /.idea/
+*.php~
