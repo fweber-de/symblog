@@ -6,6 +6,10 @@ sb_admin:
     resource: "@sbAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
+_user_bundle:
+    resource: "@sbUserBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 sb_templates:
     resource: "@sbTemplateBundle/Resources/config/routing.yml"
     prefix:   /templates

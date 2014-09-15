@@ -88,3 +88,8 @@ jms_serializer:
         # class: My\FooBundle\Entity\User
         # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
         auto_detection: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: sb\UserBundle\Entity\User

@@ -22,6 +22,9 @@ class AppKernel extends Kernel
             new sb\TemplateBundle\sbTemplateBundle(),
             new sb\ApiBundle\sbApiBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new sb\UserBundle\sbUserBundle(),
+            new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
