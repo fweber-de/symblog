@@ -16,7 +16,7 @@ class BlogController extends Controller
         $posts = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findBy(array('isDraft' => 0), array('publishDate' => 'desc'));
 
         //render
-        return $this->get('template_controller')->renderTemplate('index.html.twig', array(
+        return $this->get('sb.templating')->renderTemplate('index.html.twig', array(
             'posts' => $posts
         ));
     }
@@ -42,7 +42,7 @@ class BlogController extends Controller
         }
 
         //render
-        return $this->get('template_controller')->renderTemplate('post.html.twig', array(
+        return $this->get('sb.templating')->renderTemplate('post.html.twig', array(
             'post' => $post
         ));
     }

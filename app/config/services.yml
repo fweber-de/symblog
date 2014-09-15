@@ -1,9 +1,8 @@
 services:
-    template_controller:
-        class:  "sb\TemplateBundle\Controller\TemplateController"
-        calls:
-            - [setContainer, ["@service_container"]]
+    sb.templating:
+        class:  "sb\TemplateBundle\Service\TemplateService"
         arguments:
+            - @service_container
             - %sb.current.template%
             - %sb.templates%
     jms_serializer.object_constructor:

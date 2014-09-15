@@ -2,74 +2,16 @@
 
 namespace sb\TemplateBundle\Controller;
 
-use MyProject\Proxies\__CG__\stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
-const DS = DIRECTORY_SEPARATOR;
-
 class TemplateController extends Controller
 {
-    /**
-     * @var string
-     */
-    protected $currentTemplate;
-
-    /**
-     * @var mixed
-     */
-    protected $templates;
-
-    public function __construct($currentTemplate, $templates)
-    {
-        $this->currentTemplate = $currentTemplate;
-        $this->templates = $templates;
-    }
-
-    /**
-     * @param $identifier
-     * @return mixed
-     * @throws \Exception
-     */
-    protected function getTemplateData($identifier)
-    {
-        foreach($this->templates as $template)
-        {
-            if($template['identifier'] == $identifier) return json_decode(json_encode($template), false);
-        }
-
-        throw new \Exception('The Template with Identifier "' . $identifier . '" is not defined!');
-    }
-
-    /**
-     * Gets the current Template and renders the given view
-     *
-     * @param string $viewName
-     * @param array $parameters
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function renderTemplate($viewName, $parameters = array())
-    {
-        $templateLocation = __DIR__ . '/../../../../templates/' . $this->currentTemplate;
-        $template = $this->getTemplateData($this->currentTemplate);
-        $parameters['template'] = $template;
-
-        $twig = clone $this->get('twig');
-        $twig->setLoader(new \Twig_Loader_Filesystem($templateLocation));
-
-        $rendered = $twig->render(
-            $viewName,
-            $parameters
-        );
-
-        return new Response($rendered);
-    }
-
     private function getAsset($template, $filename, $type, $contentType = null)
     {
-        $folder = __DIR__ . DS . '..' . DS . 'Resources' . DS . 'views' . DS . $template . DS . $type;
+        $folder = __DIR__ . '/../../../../templates' . '/' . $template . '/' . $type;
         $finder = new Finder();
         $finder->files()->in($folder);
 
@@ -85,7 +27,7 @@ class TemplateController extends Controller
             }
         }
 
-        throw new FileNotFoundException('File "' . $filename . '" was not found in "' . $folder . '"');
+        throw new FileNotFoundException(sprintf('File "%s" was not found in "%s"', $filename, $folder));
     }
 
     public function getJsAction($templateName, $fileName)
