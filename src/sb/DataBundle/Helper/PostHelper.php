@@ -2,6 +2,11 @@
 
 namespace sb\DataBundle\Helper;
 
+/**
+ * Class PostHelper
+ * @package sb\DataBundle\Helper
+ * @author Florian Weber <florian.weber.dd@icloud.com>
+ */
 class PostHelper
 {
     /**
@@ -12,6 +17,6 @@ class PostHelper
      */
     public static function generateSlug($title)
     {
-        return preg_replace('/[^\w\s]/', '-', preg_replace('/ /', '-', strtolower($title)));
+        return ltrim(rtrim(preg_replace('/[^\w\s]/', '-', preg_replace('/ /', '-', strtolower($title))), '-'), '-');
     }
 }

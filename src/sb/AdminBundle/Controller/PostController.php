@@ -14,7 +14,12 @@ class PostController extends Controller
      */
     public function collectionAction()
     {
-        $posts = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findAll();
+        $posts = $this->getDoctrine()->getRepository('sbDataBundle:Post')->findBy(
+            array(),
+            array(
+                'creationDate' => 'DESC'
+            )
+        );
 
         return $this->render(
             'sbAdminBundle:Post:collection.html.twig',

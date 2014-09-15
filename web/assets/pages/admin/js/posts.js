@@ -7,6 +7,8 @@
 
 $(document).ready(function () {
 
+    var submitted = false;
+
     //editor
     $('.sb-editor').trumbowyg();
 
@@ -16,11 +18,17 @@ $(document).ready(function () {
 
     $('#form-post').submit(function () {
         $('#input-text').html($('.sb-editor').html());
+        submitted = true;
         $(this).submit();
     });
 
-    $(window).bind("beforeunload", function () {
-        return confirm("Do you really want to close?");
+    window.addEventListener("beforeunload", function (e) {
+        if (!submitted) {
+            var confirmationMessage = "All unsaved effort will be lost!";
+
+            (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+            return confirmationMessage;                            //Webkit, Safari, Chrome
+        }
     });
 
 });

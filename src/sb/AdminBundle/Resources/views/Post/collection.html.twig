@@ -30,9 +30,8 @@
 
             <table class="table table-bordered table-responsive table-striped">
                 <tr>
-                    <th>PostId</th>
                     <th>Title</th>
-                    <th>Text</th>
+                    <th>Slug</th>
                     <th>Created</th>
                     <th>Edited</th>
                     <th>Actions</th>
@@ -40,27 +39,48 @@
 
                 {% for post in posts %}
 
-                    <tr>
-                        <td>{{ post.id }}</td>
+                    <tr {% if post.isDraft == true %}class="warning"{% endif %}>
                         <td>
                             <samp>{{ post.title }}</samp>
-                            <br>
+                            {% if post.isDraft == true %}
+                                <br>
+                                <label class="label label-warning">[DRAFT]</label>
+                            {% endif %}
+                        </td>
+                        <td>
                             <code>{{ post.slug }}</code>
                         </td>
                         <td>
-
-                        </td>
-                        <td>
-                            {{ post.creationDate|date('d.m.Y h:m:s') }}
+                            {{ post.creationDate|date('d.m.Y G:i:s') }}
                         </td>
                         <td>
                             {% if post.editDate != null %}
-                                {{ post.editDate|date('d.m.Y h:m:s') }}
+                                {{ post.editDate|date('d.m.Y G:i:s') }}
                             {% else %}
                                 -
                             {% endif %}
                         </td>
-                        <td></td>
+                        <td>
+                            <span class="pull-right">
+
+                                {% if post.isDraft == true %}
+                                    <a class="btn btn-success" href="#">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn btn-success" href="{{ path('blog_post_show', {slug: post.slug}) }}" target="_blank">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                {% endif %}
+
+                                <a class="btn btn-warning" href="{{ path('admin_posts_update', {postId: post.id}) }}">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger" href="{{ path('admin_posts_delete', {postId: post.id}) }}">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
                     </tr>
 
                 {% endfor %}
