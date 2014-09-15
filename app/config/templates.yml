@@ -1,0 +1,5 @@
+sb.templates:
+    -
+        name: Default
+        description: 'The Default Template'
+        identifier: Default

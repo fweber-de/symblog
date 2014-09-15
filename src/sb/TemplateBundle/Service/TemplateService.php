@@ -3,6 +3,7 @@
 namespace sb\TemplateBundle\Service;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Yaml\Parser;
 
 class TemplateService
 {
@@ -25,14 +26,17 @@ class TemplateService
 
     /**
      * @param $container
-     * @param string $currentTemplate
-     * @param mixed $templates
+     * @param $currentTemplate
      */
-    public function __construct($container, $currentTemplate, $templates)
+    public function __construct($container, $currentTemplate)
     {
         $this->container = $container;
         $this->currentTemplate = $currentTemplate;
-        $this->templates = $templates;
+
+        //get templates
+        $yaml = new Parser();
+        $this->templates = $yaml->parse(file_get_contents(__DIR__ . '/../../../../app/config/templates.yml'))['sb.templates'];
+
         $this->templateFolder = __DIR__ . '/../../../../templates';
     }
 

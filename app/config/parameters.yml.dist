@@ -18,6 +18,4 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
-    sb.templates:
-        - { name: 'Default', description: 'The Default Template', identifier: 'Default' }
-    sb.current.template: 'Default'
+    sb.current.template: Default

@@ -4,6 +4,5 @@ services:
         arguments:
             - @service_container
             - %sb.current.template%
-            - %sb.templates%
     jms_serializer.object_constructor:
         alias: jms_serializer.doctrine_object_constructor
