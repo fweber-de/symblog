@@ -1,0 +1,34 @@
+{% extends 'sbAdminBundle::layout.html.twig' %}
+
+{% block title %}BlogAdmin &middot; New Post{% endblock %}
+
+{% block currentPage %}posts{% endblock %}
+
+{% block content %}
+
+    <script src="{{ asset('assets/pages/admin/js/posts.js') }}"></script>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">New Post</h3>
+        </div>
+        <div class="panel-body">
+
+            <form id="form-post" method="post" role="form">
+                <div class="form-group">
+                    <label for="input-title">Title</label>
+                    <input type="text" class="form-control" id="input-title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="input-text">Post</label>
+                    <div class="sb-editor"></div>
+                    <textarea class="hidden" id="input-text" name="text"></textarea>
+                </div>
+                <input type="hidden" name="sent" value="1">
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

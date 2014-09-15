@@ -39,7 +39,7 @@ class PostController extends Controller
                 ->setText($request->get('text'))
                 ->setTitle($request->get('title'))
                 ->setSlug(PostHelper::generateSlug($request->get('title')))
-                ->setPublishDate(new \DateTime($request->get('publishDate')));
+                ->setPublishDate(new \DateTime($request->get('publishDate', 'now')));
 
             $validator = $this->get('validator');
             $errors = $validator->validate($post);
@@ -85,7 +85,7 @@ class PostController extends Controller
                 ->setText($request->get('text'))
                 ->setTitle($request->get('title'))
                 ->setSlug(PostHelper::generateSlug($request->get('title')))
-                ->setPublishDate(new \DateTime($request->get('publishDate')));
+                ->setPublishDate(new \DateTime($request->get('publishDate', 'now')));
 
             $validator = $this->get('validator');
             $errors = $validator->validate($post);

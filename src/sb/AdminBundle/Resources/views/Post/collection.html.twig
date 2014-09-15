@@ -1,0 +1,74 @@
+{% extends 'sbAdminBundle::layout.html.twig' %}
+
+{% block title %}BlogAdmin &middot; Posts{% endblock %}
+
+{% block currentPage %}posts{% endblock %}
+
+{% block content %}
+
+    <h1>
+        Posts
+        <span class="pull-right">
+            <a class="btn btn-success" href="{{ path('admin_posts_create') }}"><i class="fa fa-plus-circle"></i> Add
+                Post</a>
+        </span>
+    </h1>
+
+    {% if posts == null %}
+
+        <div class="panel-body">
+            <div class="alert alert-warning">
+                <strong>No Posts available!</strong>
+                <br>
+                You can <a class="alert-link" href="{{ path('admin_posts_create') }}">create one!</a>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="panel panel-default">
+
+            <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>PostId</th>
+                    <th>Title</th>
+                    <th>Text</th>
+                    <th>Created</th>
+                    <th>Edited</th>
+                    <th>Actions</th>
+                </tr>
+
+                {% for post in posts %}
+
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>
+                            <samp>{{ post.title }}</samp>
+                            <br>
+                            <code>{{ post.slug }}</code>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            {{ post.creationDate|date('d.m.Y h:m:s') }}
+                        </td>
+                        <td>
+                            {% if post.editDate != null %}
+                                {{ post.editDate|date('d.m.Y h:m:s') }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td></td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    {% endif %}
+
+{% endblock %}
