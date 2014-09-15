@@ -7,6 +7,11 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
+/**
+ * TemplateController
+ * @package sb\TemplateBundle\Controller
+ * @author Florian Weber <florian.weber.dd@icloud.com>
+ */
 class TemplateController extends Controller
 {
     private function getAsset($template, $filename, $type, $contentType = null)
