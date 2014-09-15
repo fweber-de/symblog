@@ -2,6 +2,10 @@ admin_index:
     pattern:  /
     defaults: { _controller: sbAdminBundle:Page:index }
 
+admin_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: sbAdminBundle:Page:dashboard }
+
 admin_posts:
     resource: "@sbAdminBundle/Resources/config/Post/routing.yml"
     prefix:   /posts

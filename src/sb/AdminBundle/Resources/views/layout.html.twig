@@ -31,12 +31,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">BlogAdmin</a>
+                    <a class="navbar-brand" href="{{ path('admin_index') }}">BlogAdmin</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <li id="nl-dashboard"><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                         <li id="nl-posts"><a href="{{ path('admin_posts_collection') }}"><i class="fa fa-bolt"></i> Posts</a></li>
                         <li><a target="_blank" href="{{ path('blog_index') }}"><i class="fa fa-binoculars"></i> Blog</a></li>
                     </ul>
