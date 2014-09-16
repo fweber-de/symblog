@@ -7,5 +7,5 @@ admin_templates_object:
     defaults: { _controller: sbAdminBundle:Template:object }
 
 admin_templates_updateFile:
-    pattern:  /{identifier}/edit/{filename}
+    pattern:  /{identifier}/{filename}/edit
     defaults: { _controller: sbAdminBundle:Template:updateFile }

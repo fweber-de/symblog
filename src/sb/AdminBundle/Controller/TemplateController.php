@@ -71,8 +71,8 @@ class TemplateController extends Controller
             return $this->redirect($this->generateUrl('admin_templates_collection'));
         }
 
-        $finder = new Finder();
-        $finder
+        $currentFileFinder = new Finder();
+        $currentFileFinder
             ->files()
             ->in($this->get('sb.templating')->getTemplateFolder() . '/' . $identifier)
             ->exclude('css')
@@ -80,36 +80,32 @@ class TemplateController extends Controller
             ->exclude('fonts')
             ->name($filename);
 
-        foreach ($finder as $_file) {
-            $file = $_file;
+        foreach ($currentFileFinder as $_file) {
+            $currentFile = $_file;
         }
 
         $fs = new Filesystem();
-        if (!$fs->exists($file->getRealpath())) {
+        if (!$fs->exists($currentFile->getRealpath())) {
             $session->getFlashBag()->add('error', 'The requested File does not exist!');
 
             return $this->redirect($this->generateUrl('admin_templates_collection'));
         }
 
-        $finder2 = new Finder();
-        $finder2
+        $allFiles = new Finder();
+        $allFiles
             ->files()
             ->in($this->get('sb.templating')->getTemplateFolder() . '/' . $identifier)
             ->exclude('css')
             ->exclude('js')
             ->exclude('fonts');
 
-        foreach ($finder2 as $file) {
-            $files[] = $file;
-        }
-
         return $this->render(
             'sbAdminBundle:Template:updateFile.html.twig',
             array(
                 'template' => $template,
-                '_file' => $file,
-                'fileContent' => file_get_contents($file->getRealpath()),
-                'files' => $files
+                'currentFile' => $currentFile,
+                'fileContent' => trim(trim(file_get_contents($currentFile->getRealpath())), '\t'),
+                'files' => $allFiles
             )
         );
     }
