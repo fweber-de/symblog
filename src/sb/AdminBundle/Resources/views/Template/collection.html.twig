@@ -35,6 +35,9 @@
                     <tr>
                         <td>
                             {{ template.identifier }}
+                            {% if currentTemplate.identifier == template.identifier %}
+                                <span class="label label-success pull-right">Active</span>
+                            {% endif %}
                         </td>
                         <td>
                             {{ template.name }}

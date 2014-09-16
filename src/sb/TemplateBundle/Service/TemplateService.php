@@ -113,4 +113,9 @@ class TemplateService
     {
         return $this->templateFolder;
     }
+    
+    public function getCurrentTemplate()
+    {
+        return $this->getTemplateData($this->currentTemplate);
+    }
 }

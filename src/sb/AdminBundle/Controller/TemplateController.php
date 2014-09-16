@@ -23,7 +23,8 @@ class TemplateController extends Controller
         return $this->render(
             'sbAdminBundle:Template:collection.html.twig',
             array(
-                'templates' => $templates
+                'templates' => $templates,
+                'currentTemplate' => $this->get('sb.templating')->getCurrentTemplate()
             )
         );
     }
@@ -39,17 +40,13 @@ class TemplateController extends Controller
             return $this->redirect($this->generateUrl('admin_templates_collection'));
         }
 
-        $finder = new Finder();
-        $finder
+        $files = new Finder();
+        $files
             ->files()
             ->in($this->get('sb.templating')->getTemplateFolder() . '/' . $identifier)
             ->exclude('css')
             ->exclude('js')
             ->exclude('fonts');
-
-        foreach ($finder as $file) {
-            $files[] = $file;
-        }
 
         return $this->render(
             'sbAdminBundle:Template:object.html.twig',
