@@ -38,11 +38,25 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li id="nl-dashboard"><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i>
-                                Dashboard</a></li>
-                        <li id="nl-posts"><a href="{{ path('admin_posts_collection') }}"><i class="fa fa-bolt"></i>
-                                Posts</a></li>
-                        <li><a target="_blank" href="{{ path('blog_index') }}"><i class="fa fa-binoculars"></i> Blog</a>
+                        <li id="nl-dashboard">
+                            <a href="{{ path('admin_dashboard') }}">
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </a>
+                        </li>
+                        <li id="nl-posts">
+                            <a href="{{ path('admin_posts_collection') }}">
+                                <i class="fa fa-bolt"></i> Posts
+                            </a>
+                        </li>
+                        <li id="nl-templates">
+                            <a href="{{ path('admin_templates_collection') }}">
+                                <i class="fa fa-paint-brush"></i> Templates
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="{{ path('blog_index') }}">
+                                <i class="fa fa-binoculars"></i> Blog
+                            </a>
                         </li>
                     </ul>
 
@@ -52,7 +66,11 @@
                                 <i class="fa fa-user"></i> {{ app.user.username }}<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        <i class="fa fa-power-off"></i>
+                                        Logout</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

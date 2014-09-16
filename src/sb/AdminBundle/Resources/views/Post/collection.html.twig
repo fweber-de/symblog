@@ -19,7 +19,6 @@
         <div class="panel-body">
             <div class="alert alert-warning">
                 <strong>No Posts available!</strong>
-                <br>
                 You can <a class="alert-link" href="{{ path('admin_posts_create') }}">create one!</a>
             </div>
         </div>
@@ -34,6 +33,7 @@
                     <th>Slug</th>
                     <th>Created</th>
                     <th>Edited</th>
+                    <th>Author</th>
                     <th>Actions</th>
                 </tr>
 
@@ -59,6 +59,9 @@
                             {% else %}
                                 -
                             {% endif %}
+                        </td>
+                        <td>
+                            {{ post.author.username }}
                         </td>
                         <td>
                             <span class="pull-right">

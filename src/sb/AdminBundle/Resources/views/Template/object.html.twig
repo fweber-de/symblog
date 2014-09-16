@@ -1,0 +1,42 @@
+{% extends 'sbAdminBundle::layout.html.twig' %}
+
+{% block title %}BlogAdmin &middot; Template '{{ template.name }}'{% endblock %}
+
+{% block currentPage %}templates{% endblock %}
+
+{% block content %}
+
+
+
+    <h1>
+        Template '{{ template.name }}'
+        <span class="pull-right">
+            <a class="btn btn-default" href="{{ path('admin_templates_collection') }}">
+                <i class="fa fa-chevron-circle-left"></i> Back
+            </a>
+        </span>
+    </h1>
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-2">
+
+            <div class="list-group">
+                {% for file in files %}
+                    <a href="{{ path('admin_templates_updateFile', {identifier: template.identifier, filename: file.filename}) }}"
+                       class="list-group-item">{{ file.filename }}</a>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-lg-10">
+
+            <div class="alert alert-info">
+                Please select a file!
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

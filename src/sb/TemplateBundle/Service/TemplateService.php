@@ -35,7 +35,9 @@ class TemplateService
 
         //get templates
         $yaml = new Parser();
-        $this->templates = $yaml->parse(file_get_contents(__DIR__ . '/../../../../app/config/templates.yml'))['sb.templates'];
+        $this->templates = $yaml->parse(
+            file_get_contents(__DIR__ . '/../../../../app/config/templates.yml')
+        )['sb.templates'];
 
         $this->templateFolder = __DIR__ . '/../../../../templates';
     }
@@ -47,7 +49,7 @@ class TemplateService
      * @return mixed
      * @throws \Exception
      */
-    protected function getTemplateData($identifier)
+    public function getTemplateData($identifier)
     {
         foreach ($this->templates as $template) {
             if ($template['identifier'] == $identifier) {
@@ -80,5 +82,35 @@ class TemplateService
         );
 
         return new Response($rendered);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTemplatesArray()
+    {
+        return $this->templates;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTemplatesObjectArray()
+    {
+        $out = array();
+
+        foreach ($this->templates as $template) {
+            $out[] = json_decode(json_encode($template), false);
+        }
+
+        return $out;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplateFolder()
+    {
+        return $this->templateFolder;
     }
 }

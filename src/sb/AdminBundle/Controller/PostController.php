@@ -36,6 +36,7 @@ class PostController extends Controller
     public function createAction(Request $request)
     {
         $session = $request->getSession();
+        $user = $this->getUser();
 
         if ($request->get('sent', 0) == 1) {
             $post = new Post();
@@ -44,7 +45,8 @@ class PostController extends Controller
                 ->setText($request->get('text'))
                 ->setTitle($request->get('title'))
                 ->setSlug(PostHelper::generateSlug($request->get('title')))
-                ->setPublishDate(new \DateTime($request->get('publishDate', 'now')));
+                ->setPublishDate(new \DateTime($request->get('publishDate', 'now')))
+                ->setAuthor($user);
 
             $validator = $this->get('validator');
             $errors = $validator->validate($post);

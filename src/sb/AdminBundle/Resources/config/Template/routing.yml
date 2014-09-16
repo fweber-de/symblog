@@ -1,0 +1,11 @@
+admin_templates_collection:
+    pattern:  /
+    defaults: { _controller: sbAdminBundle:Template:collection }
+
+admin_templates_object:
+    pattern:  /{identifier}
+    defaults: { _controller: sbAdminBundle:Template:object }
+
+admin_templates_updateFile:
+    pattern:  /{identifier}/edit/{filename}
+    defaults: { _controller: sbAdminBundle:Template:updateFile }

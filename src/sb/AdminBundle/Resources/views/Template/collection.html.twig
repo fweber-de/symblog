@@ -1,0 +1,66 @@
+{% extends 'sbAdminBundle::layout.html.twig' %}
+
+{% block title %}BlogAdmin &middot; Templates{% endblock %}
+
+{% block currentPage %}templates{% endblock %}
+
+{% block content %}
+
+    <h1>
+        Templates
+    </h1>
+
+    {% if templates == null %}
+
+        <div class="panel-body">
+            <div class="alert alert-warning">
+                <strong>No Templates available!</strong>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="panel panel-default">
+
+            <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>Identifier</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+
+                {% for template in templates %}
+
+                    <tr>
+                        <td>
+                            {{ template.identifier }}
+                        </td>
+                        <td>
+                            {{ template.name }}
+                        </td>
+                        <td>
+                            <samp>{{ template.description }}</samp>
+                        </td>
+                        <td>
+                            {% if template.identifier != 'Default' %}
+
+                                <span class="pull-right">
+                                    <a class="btn btn-success" href="{{ path('admin_templates_object', {identifier: template.identifier}) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </span>
+
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    {% endif %}
+
+{% endblock %}

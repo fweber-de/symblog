@@ -3,3 +3,7 @@ sb.templates:
         name: Default
         description: 'The Default Template'
         identifier: Default
+    -
+        name: Test
+        description: 'The Test Template'
+        identifier: Test

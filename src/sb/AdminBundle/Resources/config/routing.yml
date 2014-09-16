@@ -9,3 +9,7 @@ admin_dashboard:
 admin_posts:
     resource: "@sbAdminBundle/Resources/config/Post/routing.yml"
     prefix:   /posts
+
+admin_templates:
+    resource: "@sbAdminBundle/Resources/config/Template/routing.yml"
+    prefix:   /templates

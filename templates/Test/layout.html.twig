@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}UNHANDLED TITLE!{% endblock %}</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet"
+          href="{{ path('sb_template_css', {templateName: template.identifier, fileName: 'bootstrap.min.css'}) }}">
+    <link rel="stylesheet"
+          href="{{ path('sb_template_css', {templateName: template.identifier, fileName: 'app.css'}) }}">
+
+    <!-- JAVASCRIPTS -->
+    <script src="{{ path('sb_template_js', {templateName: template.identifier, fileName: 'jquery-2.1.1.min.js'}) }}"></script>
+    <script src="{{ path('sb_template_js', {templateName: template.identifier, fileName: 'bootstrap.min.js'}) }}"></script>
+    <script src="{{ path('sb_template_js', {templateName: template.identifier, fileName: 'app.js'}) }}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="col-lg-12">
+
+        <div class="header">
+            <h1>SymBlog</h1>
+        </div>
+
+        <div class="navigator">
+            <a href="{{ path('blog_index') }}">Blog</a>
+        </div>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div style="text-align: center;">
+            <a href="{{ path('admin_index') }}">Admin</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

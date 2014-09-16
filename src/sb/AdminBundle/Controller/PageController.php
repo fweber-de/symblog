@@ -2,10 +2,7 @@
 
 namespace sb\AdminBundle\Controller;
 
-use sb\DataBundle\Entity\Post;
-use sb\DataBundle\Helper\PostHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
 {
